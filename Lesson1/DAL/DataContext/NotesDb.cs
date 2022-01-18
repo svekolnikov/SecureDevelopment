@@ -6,5 +6,12 @@ namespace Lesson1.DAL.DataContext
     public class NotesDb : DbContext
     {
         public DbSet<Note> Notes { get; set; }
+
+        public NotesDb()
+        {}
+
+        public NotesDb(DbContextOptions options)
+        : base(options)
+        {}
     }
 }

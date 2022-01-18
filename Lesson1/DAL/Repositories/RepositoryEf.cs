@@ -43,25 +43,26 @@ namespace Lesson1.DAL.Repositories
 
         public async Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken = default)
         {
+            entity.UpdatedAt = DateTime.UtcNow;
             _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
             _logger.LogInformation("Updated entity: {0}", entity);
             return true;
         }
 
-        public async Task<bool> DeleteAsync(T entity, CancellationToken cancellationToken)
+        public async Task<bool> DeleteByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var toDel = await GetById(entity.Id, cancellationToken).ConfigureAwait(false);
+            var toDel = await GetById(id, cancellationToken).ConfigureAwait(false);
             if (toDel is null)
             {
-                _logger.LogInformation("Entity not found: {0}", entity);
+                _logger.LogInformation("Entity not found: {0}", toDel);
                 return false;
             }
 
             _dbContext.Entry(toDel).State = EntityState.Deleted;
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            _logger.LogInformation("Deleted entity: {0}", entity);
+            _logger.LogInformation("Deleted entity: {0}", toDel);
 
             return true;
         }
