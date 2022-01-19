@@ -1,4 +1,4 @@
-﻿using Lesson1.DAL.Interfaces.Base;
+﻿using NotesApi.DAL.Interfaces.Base;
 
 namespace Lesson1.DAL.Models
 {

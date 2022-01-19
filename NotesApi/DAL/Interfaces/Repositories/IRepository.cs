@@ -1,6 +1,6 @@
-﻿using Lesson1.DAL.Interfaces.Base;
+﻿using NotesApi.DAL.Interfaces.Base;
 
-namespace Lesson1.DAL.Interfaces.Repositories
+namespace NotesApi.DAL.Interfaces.Repositories
 {
     public interface IRepository<T> where T : class, IEntity
     {

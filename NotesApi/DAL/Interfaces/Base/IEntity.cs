@@ -1,4 +1,4 @@
-﻿namespace Lesson1.DAL.Interfaces.Base
+﻿namespace NotesApi.DAL.Interfaces.Base
 {
     public interface IEntity
     {

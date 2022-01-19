@@ -1,7 +1,9 @@
 using Lesson1.DAL.DataContext;
-using Lesson1.DAL.Interfaces.Repositories;
-using Lesson1.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
+using NotesApi.DAL.Interfaces.Repositories;
+using NotesApi.DAL.Repositories;
+using NotesApi.Services;
+using NotesApi.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,14 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
+//Repositories
 services.AddScoped(typeof(IRepository<>), typeof(RepositoryEf<>));
+services.AddScoped(typeof(IRepositoryEf<>), typeof(RepositoryEf<>));
+services.AddScoped(typeof(IRepositoryDapper<>), typeof(RepositoryDapper<>));
+
+services.AddScoped(typeof(INotesManager<>), typeof(NotesManager<>));
+
+//Database
 services.AddDbContext<NotesDb>(opt => 
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 

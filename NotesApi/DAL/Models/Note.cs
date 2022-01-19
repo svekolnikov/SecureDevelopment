@@ -1,6 +1,4 @@
-﻿using Lesson1.DAL.Interfaces.Base;
-
-namespace Lesson1.DAL.Models
+﻿namespace Lesson1.DAL.Models
 {
     public class Note : BaseEntity
     {

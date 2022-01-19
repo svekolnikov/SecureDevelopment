@@ -1,11 +1,11 @@
 ﻿using Lesson1.DAL.DataContext;
-using Lesson1.DAL.Interfaces.Base;
-using Lesson1.DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using NotesApi.DAL.Interfaces.Base;
+using NotesApi.DAL.Interfaces.Repositories;
 
-namespace Lesson1.DAL.Repositories
+namespace NotesApi.DAL.Repositories
 {
-    public class RepositoryEf<T> : IRepository<T> where T : class, IEntity  
+    public class RepositoryEf<T> : IRepositoryEf<T> where T : class, IEntity  
     {
         private readonly NotesDb _dbContext;
         private readonly ILogger<RepositoryEf<T>> _logger;

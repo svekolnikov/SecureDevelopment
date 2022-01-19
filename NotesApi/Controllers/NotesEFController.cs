@@ -1,7 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
-using Lesson1.DAL.Interfaces.Repositories;
 using Lesson1.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
+using NotesApi.DAL.Interfaces.Repositories;
+using NotesApi.Services.Interfaces;
 
 namespace Lesson1.Controllers
 {
@@ -9,12 +10,12 @@ namespace Lesson1.Controllers
     [ApiController]
     public class NotesEfController : ControllerBase
     {
-        private readonly IRepository<Note> _repository;
+        private readonly INotesManager<Note> _notesManager;
         private readonly ILogger<NotesEfController> _logger;
 
-        public NotesEfController(IRepository<Note> repository, ILogger<NotesEfController> logger)
+        public NotesEfController(INotesManager<Note> notesManager, ILogger<NotesEfController> logger)
         {
-            _repository = repository;
+            _notesManager = notesManager;
             _logger = logger;
         }
 
@@ -23,7 +24,7 @@ namespace Lesson1.Controllers
         {
             try
             {
-                var result = await _repository.GetAllAsync(CancellationToken.None);
+                var result = await _notesManager.NotesEf.GetAllAsync(CancellationToken.None);
                 return result;
             }
             catch (Exception e)
@@ -38,7 +39,7 @@ namespace Lesson1.Controllers
         {
             try
             {
-                var result = await _repository.GetById(id);
+                var result = await _notesManager.NotesEf.GetById(id);
                 return result;
             }
             catch (Exception e)
@@ -48,12 +49,12 @@ namespace Lesson1.Controllers
             }
         }
         
-        [HttpPost]
+        [HttpPost("notes/{id}")]
         public async Task AddAsync([FromBody] Note dto)
         {
             try
             {
-                await _repository.AddAsync(dto);
+                await _notesManager.NotesEf.AddAsync(dto);
             }
             catch (Exception e)
             {
@@ -67,7 +68,7 @@ namespace Lesson1.Controllers
         {
             try
             {
-                await _repository.UpdateAsync(dto);
+                await _notesManager.NotesEf.UpdateAsync(dto);
             }
             catch (Exception e)
             {
@@ -76,12 +77,12 @@ namespace Lesson1.Controllers
             }
         }
         
-        [HttpDelete("{id}")]
+        [HttpDelete("notes/{id}")]
         public async Task Delete(int id)
         {
             try
             {
-                await _repository.DeleteByIdAsync(id);
+                await _notesManager.NotesEf.DeleteByIdAsync(id);
             }
             catch (Exception e)
             {
