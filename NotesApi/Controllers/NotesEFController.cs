@@ -1,10 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using Lesson1.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
-using NotesApi.DAL.Interfaces.Repositories;
 using NotesApi.Services.Interfaces;
 
-namespace Lesson1.Controllers
+namespace NotesApi.Controllers
 {
     [Route("api/ef")]
     [ApiController]
