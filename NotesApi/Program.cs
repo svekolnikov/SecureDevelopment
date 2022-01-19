@@ -17,7 +17,7 @@ services.AddSwaggerGen();
 //Repositories
 services.AddScoped(typeof(IRepository<>), typeof(RepositoryEf<>));
 services.AddScoped(typeof(IRepositoryEf<>), typeof(RepositoryEf<>));
-services.AddScoped(typeof(IRepositoryDapper<>), typeof(RepositoryDapper<>));
+services.AddScoped<INotesRepositoryDapper, NotesNotesRepositoryDapper>();
 
 services.AddScoped(typeof(INotesManager<>), typeof(NotesManager<>));
 

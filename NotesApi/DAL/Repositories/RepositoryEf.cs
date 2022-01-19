@@ -33,12 +33,12 @@ namespace NotesApi.DAL.Repositories
             return result;
         }
 
-        public async Task<int> AddAsync(T entity, CancellationToken cancellationToken = default)
+        public async Task<int> AddAsync(T note, CancellationToken cancellationToken = default)
         {
-            await Set.AddAsync(entity, cancellationToken).ConfigureAwait(false);
+            await Set.AddAsync(note, cancellationToken).ConfigureAwait(false);
             await _dbContext.SaveChangesAsync(cancellationToken);
-            _logger.LogInformation("Added entity: {0}", entity);
-            return entity.Id;
+            _logger.LogInformation("Added note: {0}", note);
+            return note.Id;
         }
 
         public async Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken = default)
@@ -46,7 +46,7 @@ namespace NotesApi.DAL.Repositories
             entity.UpdatedAt = DateTime.UtcNow;
             _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-            _logger.LogInformation("Updated entity: {0}", entity);
+            _logger.LogInformation("Updated note: {0}", entity);
             return true;
         }
 
@@ -62,7 +62,7 @@ namespace NotesApi.DAL.Repositories
             _dbContext.Entry(toDel).State = EntityState.Deleted;
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            _logger.LogInformation("Deleted entity: {0}", toDel);
+            _logger.LogInformation("Deleted note: {0}", toDel);
 
             return true;
         }

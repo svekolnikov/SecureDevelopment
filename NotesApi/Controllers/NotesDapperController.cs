@@ -33,7 +33,7 @@ namespace NotesApi.Controllers
             }
         }
 
-        [HttpGet("notes/{id}")]
+        [HttpGet("note/{id}")]
         public async Task<Note?> GetById(int id)
         {
             try
@@ -48,7 +48,7 @@ namespace NotesApi.Controllers
             }
         }
 
-        [HttpPost("notes/{id}")]
+        [HttpPost("note")]
         public async Task AddAsync([FromBody] Note dto)
         {
             try
@@ -62,7 +62,7 @@ namespace NotesApi.Controllers
             }
         }
 
-        [HttpPut("notes/{id}")]
+        [HttpPut("note")]
         public async Task Update([FromBody] Note dto)
         {
             try
@@ -76,7 +76,7 @@ namespace NotesApi.Controllers
             }
         }
 
-        [HttpDelete("notes/{id}")]
+        [HttpDelete("note/{id}")]
         public async Task Delete(int id)
         {
             try

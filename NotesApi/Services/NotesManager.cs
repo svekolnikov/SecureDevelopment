@@ -1,5 +1,4 @@
-﻿using Lesson1.DAL.Models;
-using NotesApi.DAL.Interfaces.Base;
+﻿using NotesApi.DAL.Interfaces.Base;
 using NotesApi.DAL.Interfaces.Repositories;
 using NotesApi.Services.Interfaces;
 
@@ -8,13 +7,13 @@ namespace NotesApi.Services
     public class NotesManager<T> : INotesManager<T> where T : class,IEntity
 
     {
-    public NotesManager(IRepository<T> repositoryEf, IRepository<T> repositoryDapper)
+    public NotesManager(IRepositoryEf<T> repositoryEf, INotesRepositoryDapper notesRepositoryDapper)
     {
         NotesEf = repositoryEf;
-        NotesDapper = repositoryDapper;
+        NotesDapper = notesRepositoryDapper;
     }
 
-    public IRepository<T> NotesEf { get; }
-    public IRepository<T> NotesDapper { get; }
+    public IRepositoryEf<T> NotesEf { get; }
+    public INotesRepositoryDapper NotesDapper { get; }
     }
 }
