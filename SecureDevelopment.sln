@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApi", "NotesApi\NotesApi.csproj", "{EAA72217-EFED-4244-B53B-68EDDCD4B7BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebitCardApi", "DebitCardApi\DebitCardApi.csproj", "{5A157DE9-EE2E-4163-86EB-D6693B76FF6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EAA72217-EFED-4244-B53B-68EDDCD4B7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EAA72217-EFED-4244-B53B-68EDDCD4B7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EAA72217-EFED-4244-B53B-68EDDCD4B7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EAA72217-EFED-4244-B53B-68EDDCD4B7BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A157DE9-EE2E-4163-86EB-D6693B76FF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A157DE9-EE2E-4163-86EB-D6693B76FF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A157DE9-EE2E-4163-86EB-D6693B76FF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A157DE9-EE2E-4163-86EB-D6693B76FF6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
