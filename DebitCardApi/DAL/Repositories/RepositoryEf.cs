@@ -38,7 +38,7 @@ namespace DebitCardApi.DAL.Repositories
             await Set.AddAsync(entity, cancellationToken).ConfigureAwait(false);
             await _dbContext.SaveChangesAsync(cancellationToken);
             _logger.LogInformation("Added entity: {0}", entity);
-            return entity.Id;
+            return 0;
         }
 
         public async Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken = default)
