@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DebitCardApi.DAL.DataContext
 {
-    public class DebitCardsDb : DbContext
+    public class DataDbContext : DbContext
     {
         public DbSet<DebitCard> DebitCards { get; set; }
 
-        public DebitCardsDb()
+        public DataDbContext()
         {}
 
-        public DebitCardsDb(DbContextOptions options)
+        public DataDbContext(DbContextOptions options)
         : base(options)
         {}
     }

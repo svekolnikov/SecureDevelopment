@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DebitCardApi.Migrations
 {
-    [DbContext(typeof(DebitCardsDb))]
+    [DbContext(typeof(DataDbContext))]
     partial class DebitCardsDbModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
