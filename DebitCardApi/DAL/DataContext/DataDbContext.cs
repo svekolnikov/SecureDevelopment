@@ -10,7 +10,7 @@ namespace DebitCardApi.DAL.DataContext
         public DataDbContext()
         {}
 
-        public DataDbContext(DbContextOptions options)
+        public DataDbContext(DbContextOptions<DataDbContext> options)
         : base(options)
         {}
     }

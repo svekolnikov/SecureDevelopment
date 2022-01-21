@@ -122,6 +122,7 @@ services.AddAuthorization(config =>
 });
 
 services.AddScoped<IJwtService, JwtService>();
+services.AddScoped<IAccountsManager, AccountsManager>();
 
 var app = builder.Build();
 
