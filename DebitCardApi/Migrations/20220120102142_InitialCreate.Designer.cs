@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DebitCardApi.Migrations
 {
-    [DbContext(typeof(DebitCardsDb))]
+    [DbContext(typeof(DataDbContext))]
     [Migration("20220120102142_InitialCreate")]
     partial class InitialCreate
     {

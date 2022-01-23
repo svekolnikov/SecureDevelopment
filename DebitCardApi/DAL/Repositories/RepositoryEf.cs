@@ -7,13 +7,13 @@ namespace DebitCardApi.DAL.Repositories
 {
     public class RepositoryEf<T> : IRepositoryEf<T> where T : class, IEntity  
     {
-        private readonly DebitCardsDb _dbContext;
+        private readonly DataDbContext _dbContext;
         private readonly ILogger<RepositoryEf<T>> _logger;
 
         protected DbSet<T> Set { get; }
         protected virtual IQueryable<T> Entities => Set;
 
-        public RepositoryEf(DebitCardsDb dbContext, ILogger<RepositoryEf<T>> logger)
+        public RepositoryEf(DataDbContext dbContext, ILogger<RepositoryEf<T>> logger)
         {
             _dbContext = dbContext;
             _logger = logger;

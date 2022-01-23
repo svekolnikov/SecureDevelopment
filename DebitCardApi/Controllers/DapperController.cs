@@ -1,12 +1,14 @@
 ﻿using System.Runtime.CompilerServices;
 using DebitCardApi.DAL.Models;
 using DebitCardApi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DebitCardApi.Controllers
 {
     [Route("api/dapper")]
     [ApiController]
+    [Authorize]
     public class DapperController : ControllerBase
     {
         private readonly IDebitCardsManager<DebitCard> _debitCardsManager;

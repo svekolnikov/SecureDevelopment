@@ -14,7 +14,7 @@ namespace DebitCardApi.DAL.Repositories
 
         public RepositoryDapper(IConfiguration configuration, ILogger<RepositoryDapper> logger)
         {
-            _connectionString = configuration.GetConnectionString("Default");
+            _connectionString = configuration.GetConnectionString("Data");
         }
 
         public async Task<IEnumerable<DebitCard>> GetAllAsync(CancellationToken cancellationToken = default)
