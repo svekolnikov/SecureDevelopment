@@ -2,7 +2,6 @@
 using DebitCardApi.DTO;
 using DebitCardApi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DebitCardApi.Controllers
@@ -26,16 +25,41 @@ namespace DebitCardApi.Controllers
         {
             try
             {
-                await _accountsManager.RegisterAsync(userDto);
+                var serviceResult = await _accountsManager.RegisterAsync(userDto);
+                if (serviceResult.IsSuccess)
+                    return Ok(new { Message = "User registered." });
+
+                var errors = new { Errors = serviceResult.Failures };
+                return BadRequest(errors);
             }
             catch (Exception e)
             {
                 LogError(e);
-                BadRequest("Error 500");
+                return StatusCode(500);
             }
-
-            return Ok(new { Message = "User registered." });
         }
+
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync(LoginDto dto)
+        {
+            try
+            {
+                var serviceResult = await _accountsManager.LoginAsync(dto);
+                if (serviceResult.IsSuccess)
+                {
+                    return Ok(new { Message = "User has logged.", Jwt = serviceResult });
+                }
+
+                return Unauthorized();
+            }
+            catch (Exception e)
+            {
+                LogError(e);
+                return StatusCode(500);
+            }
+        }
+
 
         private void LogError(Exception e, [CallerMemberName] string methodName = null!)
         {

@@ -6,6 +6,7 @@ using DebitCardApi.DAL.Interfaces.Repositories;
 using DebitCardApi.DAL.Models.Identity;
 using DebitCardApi.DAL.Repositories;
 using DebitCardApi.Services;
+using DebitCardApi.Services.Identity;
 using DebitCardApi.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -56,19 +57,6 @@ services.AddAuthentication(x =>
                 {
                     config.Events = new JwtBearerEvents
                     {
-                        OnMessageReceived = context =>
-                        {
-                            ////if token in query
-                            //if (context.Request.Query.ContainsKey(Constants.COOKIEKEY))
-                            //{
-                            //    context.Token = context.Request.Query[Constants.COOKIEKEY];
-                            //}
-
-                            ////if token on cookies
-                            //context.Token = context.Request.Cookies[Constants.COOKIEKEY];
-
-                            return Task.CompletedTask;
-                        },
                         OnTokenValidated = async context =>
                         {
                             var userManager = context.HttpContext.RequestServices.GetRequiredService<UserManager<ApplicationUser>>();
@@ -123,6 +111,7 @@ services.AddAuthorization(config =>
 
 services.AddScoped<IJwtService, JwtService>();
 services.AddScoped<IAccountsManager, AccountsManager>();
+services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

@@ -4,6 +4,7 @@ namespace DebitCardApi.Services.Interfaces
 {
     public interface IAccountsManager
     {
-        Task RegisterAsync(RegistrationUserDto user);
+        Task<IServiceResult> RegisterAsync(RegistrationUserDto user, CancellationToken cancellationToken = default);
+        Task<IServiceResult<string>> LoginAsync(LoginDto dto, CancellationToken cancellationToken = default);
     }
 }
